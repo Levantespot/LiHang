@@ -13,14 +13,14 @@
 | - | - | - | - | - | - | - | - |
 | $\hat {a}$ | **\hat{a}** | $\check{a}$ | **\check{a}** | $\tilde{a}$ | **\tilde{a}** | $\acute{a}$ | **\acute{a}** |
 | $\grave{a}$ | **\grave{a}** | $\dot {a}$    | **\dot{a}** | **$\bar{a}$ **  | **\bar{a}** | $\ddot a$ | **\ddot{a}**  |
-| $\vec {a}$  | **\vec{a}** | **$\widehat{A}$ | **\widehat{A}** | $\widetilde{A}$ | **\widetilde{A}** | $\breve a$  | **\breve{a}** |
-| $\tilde{A}$ | **\tilde{A}** | $\hat{A}$ | **\hat{A}** |                 |                   |  |  |
+| $\vec {a}$  | **\vec{a}** | $\widehat{A}$ | **\widehat{A}** | $\widetilde{A}$ | **\widetilde{A}** | $\breve a$  | **\breve{a}** |
+|  |  | $\hat{A}$ | **\hat{A}** | $\tilde{A}$ | **\tilde{A}** |  |  |
 
 ### 表 2: 小写希腊字母
 
 |示例|代码|示例|代码|示例|代码|示例|代码|
 |-|-|-|-|-|-|-|-|
-| $\alpha$ | \alpha | $\theta$ | **\theta** | $\upsilon$ | **\upsilon** | $o $ | o |
+| $\alpha$ | \alpha | $\theta$ | **\theta** | $\upsilon$ | **\upsilon** | $o $ | **o** |
 | $\beta$ | **\beta** | $\vartheta$ | **\vartheta** | $\pi$ | **\pi** | $\phi$   | **\phi** |
 | $\gamma$ | **\gamma** | $\iota$ | **\iota** | $\varpi$ | **\varpi** | $\varphi$ | **\varphi** |
 | $\delta$ | **\delta** | $\kappa$ | **\kappa** | $\rho$ | **\rho** | $\chi$ | **\chi** |
@@ -61,7 +61,7 @@
 | $\bigotimes$ | \bigotimes | $\oint$ | \oint | $\iint$ | \iint |
 | $\int x\,{\rm d}x$ | \int x\,\{\rm d}x | $\bigsqcup$ | \bigsqcup | $\lgroup \rgroup$ | \lgroup \rgroup |
 | $\coprod$ | \coprod | $\bigodot$ | \bigodot  | $\partial$ | \partial |
-| $\det$ | **\det** | $\max$ | \max | $\min$ | \min |
+| $\det$ | \det | $\max$ | \max | $\min$ | \min |
 | $\log$ | \log | $\mathrm{d}x$ | \mathrm{d}x |  |  |
 
 ### 表 6: 常用箭头
@@ -91,12 +91,12 @@
 |$\therefore$ | \therefore | $\because$ | \because  | $\min \limits_{f \in {H}}$ | \min \limits_{f \in {H}} |
 | $\infty$     | \infty     | $g^\prime$       | g^\prime       | $\forall$                  | \forall                  |
 | $\varpropto$ | \varpropto | $\thicksim \sim$ | \thicksim \sim | $\left(\frac{A}{B}\right)$ | \left(\frac{A}{B}\right) |
-| $\exist$     | \exist     | $\bot$           | **\bot**       | $\top$                     | **\top**                 |
+| $\exist$     | \exist     | $\bot$           | \bot       | $\top$                     | \top                 |
 | $\pm$   | \pm | $\sqrt{a}$ | \sqrt{a} | $\angle$                   | \angle                   |
 | $\perp $ | **\perp** | $\lceil$         | \lceil         | $\rceil$                   | \rceil                   |
 | $\lfloor$    | \lfloor    | $\rfloor$        | \rfloor        | $\circ$                    | \circ                    |
 | $\cdots$     | \cdots     | $\vdots$         | \vdots         | $\ddots$                   | \ddots                   |
-| $\ldots$     | \ldots=…   |                  |                |                            |                          |
+| $\ldots$     | \ldots=…   | $\empty$ | \empty | $\varnothing$ | \varnothing |
 
 注意**\bot**和**\perp**的区别，垂直是**\perp**
 
@@ -109,7 +109,7 @@
 | $\bf{ABCdefxyzXYZ123}$ | \bf{ABCdefXYZ123} | 正粗体，黑体 |
 | $\cal {ABCdefxyzXYZ123}$ | \cal {ABCdefXYZ123} | 花体 |
 | $\sf{ABCdefXYZ123}$ | \sf{ABCdefXYZ123} | 等线体 |
-| $\mit{ABCdefxyzXYZ123}$ | \mit{ABCdefXYZ123} | **数字斜体** |
+| $\mit{ABCdefxyzXYZ123}$ | \mit{ABCdefXYZ123} | 数字斜体 |
 | $\tt{ABCdefxyzXYZ123}$ | \tt{ABCdefXYZ123} | 打印机字体 |
 
 ### 表 10: 空格与间隔
@@ -329,11 +329,11 @@ $$
 
 ### 表XI: Emoji
 
-| :smirk: smirk                | :smile:smile | :laughing:laughing | :blush:blush       | :smiley:smiley | :heart_eyes:heart_eyes |
-| ---------------------------- | ------------ | ------------------ | ------------------ | -------------- | ---------------------- |
-| :kissing_heart:kissing_heart | :wink:wink   | :kissing:kissing   | :confused:confused | :sweat:sweat   | :joy:joy               |
-| :sob:sob                     | :cry:cry     | :angry:angry       | :yum:yum           | :mask:mask     | :sunglasses:sunglasses |
-| :heartpulse:heartpulse       | :alien:alien | :cupid:cupid       | :+1:+1             | :cn:cn         | :shit:shit             |
+| :smirk: smirk          | :smile:smile | :laughing:laughing | :blush:blush       | :smiley:smiley | :heart_eyes:heart_eyes |
+| ---------------------- | ------------ | ------------------ | ------------------ | -------------- | ---------------------- |
+| 😘kissing_heart         | :wink:wink   | :kissing:kissing   | :confused:confused | :sweat:sweat   | :joy:joy               |
+| :sob:sob               | :cry:cry     | :angry:angry       | :yum:yum           | :mask:mask     | :sunglasses:sunglasses |
+| :heartpulse:heartpulse | :alien:alien | :cupid:cupid       | :+1:+1             | :cn:cn         | :shit:shit             |
 
 
 
