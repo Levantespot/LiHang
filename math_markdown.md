@@ -98,7 +98,7 @@
 | $\cdots$     | \cdots     | $\vdots$         | \vdots         | $\ddots$                   | \ddots                   |
 | $\ldots$     | \ldots=…   | $\empty$ | \empty | $\varnothing$ | \varnothing |
 
-注意**\bot**和**\perp**的区别，垂直是**\perp**
+注意\bot和\perp的区别，垂直是\perp
 
 ### 表 9: 使用字体
 
@@ -125,8 +125,6 @@
 | 紧贴         | a\!b       | $a\!b$       | 缩进1/6*m*宽度 |
 
 \quad、1em、em、m代表当前字体下接近字符‘M’的宽度。
-
-
 
 ### 表 11: 分段函数与公式对齐
 
@@ -180,9 +178,9 @@ $$
 
 ```latex
 \begin{equation}
-\begin{aligned}
+\begin{align}
 L(w)&=\sum\limits^{N}_{i=1}[y_i\log\pi(x_i)+(1-y_i)\log(1-\pi(x_i))]\\&=\sum\limits^{N}_{i=1}[y_i\log{\frac{\pi(x_i)}{1-\pi(x_i)}}+\log(1-\pi(x_i))]\\&=\sum\limits^{N}_{i=1}[y_i(w\cdot x_i)-\log(1+\exp(w\cdot{x_i})]
-\end{aligned}
+\end{align}
 \end{equation}
 ```
 
@@ -210,6 +208,17 @@ L(w)&=\sum\limits^{N}_{i=1}[y_i\log\pi(x_i)+(1-y_i)\log(1-\pi(x_i))]\\
 
 1. align
 1. \nonumber的使用
+
+### 表12:排版控制
+
+#### 括号大小
+
+| 示例                                                         | 备注                                                         |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| $\left \{ \frac{3}{5}  \left [ 3 + 2 * \left ( a + b +（-0.5）\right ) \right ] \right \}$ | \left \right 配对使用，自动控制不同层次括号的大小，大小依据具体公式变化。（可能大小不变） |
+| $\bigg \{ \frac{3}{5}  \Big [ 3 + 2 * \big ( a + b + （-0.5） \big ) \Big ] \bigg \}$ | \big，\Big，\bigg，\Bigg，按顺序控制的括号不断变大，且大小相对固定。（大小必变） |
+
+
 
 ### 表X: 矩阵
 
