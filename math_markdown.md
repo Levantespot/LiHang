@@ -88,13 +88,12 @@
 
 ### 表8: 关系符号
 
-| 示例             | 代码           | 示例       | 代码     | 示例      | 代码    |
-| ---------------- | -------------- | ---------- | -------- | --------- | ------- |
-| $\therefore$     | \therefore     | $\because$ | \because | $\forall$ | \forall |
-| $\thicksim \sim$ | \thicksim \sim | $\exist$   | \exist   | $\neg$    | \neg    |
-|                  |                |            |          |           |         |
-
-
+| 示例             | 代码           | 示例           | 代码         | 示例            | 代码          |
+| ---------------- | -------------- | -------------- | ------------ | --------------- | ------------- |
+| $\therefore$     | \therefore     | $\because$     | \because     | $\forall$       | \forall       |
+| $\thicksim \sim$ | \thicksim \sim | $\exist$       | \exist       | $\neg$          | \neg          |
+| $\and$           | \and           | $\overline{p}$ | \overline{p} | $\widetilde{p}$ | \widetilde{p} |
+| $\tilde {p}$     | \tilde{p}      | $\or$          | \or          | $\oplus$        | \oplus        |
 
 ### 表 9: 其他常用符号
 
@@ -107,8 +106,6 @@
 | $\lfloor$  | \lfloor  | $\rfloor$    | \rfloor    | $\circ$                    | \circ                    |
 | $\cdots$   | \cdots   | $\vdots$     | \vdots     | $\ddots$                   | \ddots                   |
 | $\ldots$   | \ldots=… |              |            |                            |                          |
-|            |          |              |            |                            |                          |
-|            |          |              |            |                            |                          |
 
 注意\bot和\perp的区别，垂直是\perp
 
