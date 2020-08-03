@@ -21,7 +21,7 @@ $$
 
 ## 模型
 
-### 二项逻辑斯谛回归模型（Bionomial logistic regression model） 
+### 二项逻辑斯谛回归模型（Binomial logistic regression model） 
 
 该模型为分类模型，由条件概率分布 $P(Y|X)$ 表示，形式为参数化的逻辑斯谛分布。其中，随机变量 $X$ 取值为实数，随机变量 $Y$ 取值为 $1$ 或 $0$，并通过监督学习来估计模型参数。
 $$
@@ -87,11 +87,27 @@ $$
 
 ## 算法
 
+梯度下降法及牛顿法
+
+```mermaid
+graph LR
+A[x]--*-->D(wx)
+C[w]--*-->D
+B[y]--*-->G
+D--exp-->E(exp\wx/)
+E--log-->F(log\1 + exp\wx//)
+D--*-->G(y\wx/)
+F--+-->H[ans]
+G--+-->H
+```
+
+
+
 #  Maximum entropy model
 
 ## 特征
 
-
+最大熵原理根据已有的信息（**约束条件**），选择适当的概率模型，并且认为不确定的部分都是等可能的，通过熵的最大化来表示**等可能性**。
 
 ## 前置知识
 
@@ -117,31 +133,70 @@ $$
 $$
 其中 $\nu (X=x,Y=y)$ 为频数函数，表示训练数据中出现样本 $(x,y)$ 的频数，$N$ 为训练样本容量。
 
-特征函数（feature function）$f(x,y)$ 描述输入 $x$ 与输出 $y$ 之间的某一事实，定义为：
+特征函数（feature function）是描述输入 $x$ 与输出 $y$ 之间的某一事实的函数，用 $f(x)$ 表示，定义为：
 $$
 f(x,y)=\begin{cases}
 1,\quad x与y满足某一事实\\
 0,\quad 否则
 \end{cases}
 $$
-记特征函数 $f(x,y)$ 的期望值为 $E(f)$，其关于经验分布 $\hat P(X,Y)$ 的期望值用 $E_{\hat P}(f)$ 表示，并假设两期望值相等，有：
-$$
-
-$$
 
 
 ## 模型
 
-### 最大熵模型（Maximum entropy model）
+最大熵模型（Maximum entropy model）：给定训练集，用最大熵原理选择最好的分类模型。
 
-给定训练集，用最大熵原理选择最好的分类模型。
+记特征函数 $f(x,y)$ 的期望值为 $E(f)$，其关于经验分布 $\hat P(X,Y)$ 的期望值用 $E_{\hat P}(f)$ 表示，并假设两期望值相等，有：
+$$
+\begin{aligned}
+E_{\overline{P}}(f)&=\sum_{x,y}\widetilde{P}(x,y)f(x,y)\\
+=E_{{P}}(f)&=\sum_{x,y}\widetilde{P}(x)P(y|x)f(x,y)\\
+\end{aligned}
+$$
 
+上式为模型学习的约束条件。假如有 $n$ 个特征函数 $f_i(x,y),\ i=1,2,\cdots,n$，那么就有 $n$ 个约束条件。
 
-
-
+假设满足所有约束条件的模型集合为：
+$$
+\mathcal{C}\equiv \{P\in \mathcal{P}|E_P(f_i)=E_{\widetilde{P}}(f_i),\quad i=1,2,\cdots,n \}
+$$
+定义在条件概率分布 $P(Y|X)$ 上的条件熵为：
+$$
+H(P)=-\sum_{x,y}\widetilde{P}(x)P(y|x)\log P(y|x)
+$$
+则模型集合 $\mathcal{C}$ 中条件熵 $H(P)$ 最大的模型称为最大熵模型，即最好的模型。式中对数为自然对数。对于给定的训练数据集 $T=\{ (x_1,y_1),(x_2,y_2),\cdots,(x_N,y_N) \}$ 和 特征函数 $f_i(x,y),\ i=1,2,\cdots,n$，最大熵模型的学习等价于约束优化问题：
+$$
+\begin{aligned}
+\max_{P\in \mathcal{C} }&H(P)=-\sum_{x,y}\mathcal{P}(x)P(y|x)\log P(y|x)\\
+\mathrm{s.t.}\quad &E_P(f_i)=E_{\widetilde{P} }(f_i),\quad i=1,2,\cdots,n\\
+&\sum_y{P(y|x)=1}
+\end{aligned}
+$$
+求解约束最优化问题所得出的解，就是最大熵模型学习的解。根据拉格朗日对偶性，可以通过求对偶最优化问题得到原始问题的解。具体推导见书，配合例题 6.2 食用更佳。求解后并**归一化**为一般形式得：
+$$
+P_w(y|x)=\frac{1}{Z_w(x)}\exp\left({\sum\limits_{i=1}^{n}w_if_i(x,y)}\right)\\
+Z_w(x)=\sum_y\exp\left({\sum_{i=1}^{n}w_if_i(x,y)}\right)
+$$
+其中 $Z_w(x)$ 为归一化因子，$f_i(x,y)$ 是特征函数，$w_i$ 是特征的权值，$w$ 是最大熵模型中的参数向量。
 
 ## 策略
 
-
+可以证明对偶函数的极大化等价于最大熵模型的极大似然估计。
 
 ## 算法
+
+### 改进的迭代尺度法（Improved iterative scaling，IIS）
+
+对数似然函数为：
+$$
+\begin{align}
+L_{\widetilde {P}}(P_w)&=\sum \limits_{x,y}\widetilde {P}(x,y)\log{P}(y|x)\\
+&=\sum \limits_{x,y}\widetilde {P}(x,y)\sum \limits_{i=1}^{n}w_if_i(x,y) -\sum \limits_{x,y}\widetilde{P}(x,y)\log{(Z_w(x))}\\
+&=\sum \limits_{x,y}\widetilde {P}(x,y)\sum \limits_{i=1}^{n}w_if_i(x,y) -\sum \limits_{x,y}\widetilde{P}(x)P(y|x)\log{(Z_w(x))}\\
+&=\sum \limits_{x,y}\widetilde {P}(x,y)\sum \limits_{i=1}^{n}w_if_i(x,y) -\sum \limits_{x}\widetilde{P}(x)\log{(Z_w(x))}\sum_{y}P(y|x)\\
+&=\sum \limits_{x,y}\widetilde {P}(x,y)\sum \limits_{i=1}^{n}w_if_i(x,y) -\sum \limits_{x}\widetilde{P}(x)\log{(Z_w(x))}
+\end{align}
+$$
+这部分待看。
+
+### 拟牛顿法
