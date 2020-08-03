@@ -74,33 +74,45 @@
 | $\Longleftarrow$ | \Longleftarrow | $\Longrightarrow$ | \Longrightarrow | $\Longleftrightarrow$ | \Longleftrightarrow |
 | $\uparrow$ | \uparrow | $\downarrow$ | \downarrow | $\updownarrow$ | \updownarrow |
 
-### 表 7: 关系符
+### 表 7: 集合符
 
-| 示例           | 代码         | 示例        | 代码      | 示例                | 代码    |
-| -------------- | ------------ | ----------- | --------- | ------------------- | ------- |
-| $\leqslant$    | \leqslant    | $\geqslant$ | \geqslant | $\cal {C} \equiv 1$ | \equiv  |
-| $\thickapprox$ | \thickapprox | $\leq$      | \leq      | $\geq$              | \geq    |
-| $\neq$         | \neq         | $\in$       | \in       | $\hat{=}$           | \hat{=} |
-| $\subset$      | \subset      | $\subseteq$ | \subseteq | $\supset$           | \supset |
-| $\supseteq$    | \supseteq    | $\gg$       | \gg       | $\ll$               | \ll     |
+| 示例           | 代码         | 示例          | 代码        | 示例                | 代码    |
+| -------------- | ------------ | ------------- | ----------- | ------------------- | ------- |
+| $\leqslant$    | \leqslant    | $\geqslant$   | \geqslant   | $\cal {C} \equiv 1$ | \equiv  |
+| $\thickapprox$ | \thickapprox | $\leq$        | \leq        | $\geq$              | \geq    |
+| $\neq$         | \neq         | $\in$         | \in         | $\hat{=}$           | \hat{=} |
+| $\subset$      | \subset      | $\subseteq$   | \subseteq   | $\supset$           | \supset |
+| $\supseteq$    | \supseteq    | $\gg$         | \gg         | $\ll$               | \ll     |
+| $\empty$       | \empty       | $\varnothing$ | \varnothing |                     |         |
+|                |              |               |             |                     |         |
 
-### 表 8: 其他常用符号
+### 表8: 关系符号
+
+| 示例             | 代码           | 示例       | 代码     | 示例      | 代码    |
+| ---------------- | -------------- | ---------- | -------- | --------- | ------- |
+| $\therefore$     | \therefore     | $\because$ | \because | $\forall$ | \forall |
+| $\thicksim \sim$ | \thicksim \sim | $\exist$   | \exist   | $\neg$    | \neg    |
+|                  |                |            |          |           |         |
+
+
+
+### 表 9: 其他常用符号
 
 | 示例 | 代码 | 示例 | 代码 | 示例 | 代码 |
 | - | - | - | - | - | - |
-|$\therefore$ | \therefore | $\because$ | \because  | $\min \limits_{f \in {H}}$ | \min \limits_{f \in {H}} |
-| $\infty$     | \infty     | $g^\prime$       | g^\prime       | $\forall$                  | \forall                  |
-| $\varpropto$ | \varpropto | $\thicksim \sim$ | \thicksim \sim | $\left(\frac{A}{B}\right)$ | \left(\frac{A}{B}\right) |
-| $\exist$     | \exist     | $\bot$           | \bot       | $\top$                     | \top                 |
-| $\pm$   | \pm | $\sqrt{a}$ | \sqrt{a} | $\angle$                   | \angle                   |
-| $\perp $ | **\perp** | $\lceil$         | \lceil         | $\rceil$                   | \rceil                   |
-| $\lfloor$    | \lfloor    | $\rfloor$        | \rfloor        | $\circ$                    | \circ                    |
-| $\cdots$     | \cdots     | $\vdots$         | \vdots         | $\ddots$                   | \ddots                   |
-| $\ldots$     | \ldots=…   | $\empty$ | \empty | $\varnothing$ | \varnothing |
+| $\sqrt{a}$ | \sqrt{a} | $g^\prime$   | g^\prime   | $\min \limits_{f \in {H}}$ | \min \limits_{f \in {H}} |
+| $\infty$     | \infty     | $\varpropto$ | \varpropto | $\angle$                   | \angle                   |
+| $\perp $   | \perp    | $\lceil$     | \lceil     | $\rceil$                   | \rceil                   |
+| $\pm$      | \pm      | $\bot$           | \bot       | $\top$                     | \top                 |
+| $\lfloor$  | \lfloor  | $\rfloor$    | \rfloor    | $\circ$                    | \circ                    |
+| $\cdots$   | \cdots   | $\vdots$     | \vdots     | $\ddots$                   | \ddots                   |
+| $\ldots$   | \ldots=… |              |            |                            |                          |
+|            |          |              |            |                            |                          |
+|            |          |              |            |                            |                          |
 
 注意\bot和\perp的区别，垂直是\perp
 
-### 表 9: 使用字体
+### 表 10: 使用字体
 
 | 示例 | 代码 | 备注 |
 | - | - | - |
@@ -112,9 +124,9 @@
 | $\mit{ABCdefxyzXYZ123}$ | \mit{ABCdefXYZ123} | 数字斜体 |
 | $\tt{ABCdefxyzXYZ123}$ | \tt{ABCdefXYZ123} | 打印机字体 |
 
-### 表 10: 空格与间隔
+### 表 11: 空格与间隔
 
-| 语法         | 2          | 实例         | 显示           |
+| 说明         | 代码       | 示例         | 备注           |
 | ------------ | ---------- | ------------ | -------------- |
 | quad空格     | a \quad b  | $a \quad b$  | 一个*m*的宽度  |
 | 两个quad空格 | a \qquad b | $a \qquad b$ | 两个*m*的宽度  |
@@ -126,7 +138,7 @@
 
 \quad、1em、em、m代表当前字体下接近字符‘M’的宽度。
 
-### 表 11: 分段函数与公式对齐
+### 表 A: 分段函数与公式对齐
 
 #### 分段函数
 
@@ -209,7 +221,7 @@ L(w)&=\sum\limits^{N}_{i=1}[y_i\log\pi(x_i)+(1-y_i)\log(1-\pi(x_i))]\\
 1. align
 1. \nonumber的使用
 
-### 表12:排版控制
+### 表B:排版控制
 
 #### 括号大小
 
@@ -218,9 +230,16 @@ L(w)&=\sum\limits^{N}_{i=1}[y_i\log\pi(x_i)+(1-y_i)\log(1-\pi(x_i))]\\
 | $\left \{ \frac{3}{5}  \left [ 3 + 2 * \left ( a + b +（-0.5）\right ) \right ] \right \}$ | \left \right 配对使用，自动控制不同层次括号的大小，大小依据具体公式变化。（可能大小不变） |
 | $\bigg \{ \frac{3}{5}  \Big [ 3 + 2 * \big ( a + b + （-0.5） \big ) \Big ] \bigg \}$ | \big，\Big，\bigg，\Bigg，按顺序控制的括号不断变大，且大小相对固定。（大小必变） |
 
+#### 上下标位置
+
+| 示例                       | 备注                                               |
+| -------------------------- | -------------------------------------------------- |
+| $\min_{f \in {H}}$         | \min_{f \in {H}} 一般情况 inline math 会被压缩位置 |
+| $\min \limits_{f \in {H}}$ | \min \limits_{f \in {H}} 强制使下标在正下方        |
 
 
-### 表X: 矩阵
+
+### 表C: 矩阵
 
 #### 普通矩阵
 
@@ -334,9 +353,7 @@ $$
 
 
 
-## Emoji
-
-### 表XI: Emoji
+### 表D: Emoji
 
 | :smirk: smirk          | :smile:smile | :laughing:laughing | :blush:blush       | :smiley:smiley | :heart_eyes:heart_eyes |
 | ---------------------- | ------------ | ------------------ | ------------------ | -------------- | ---------------------- |
