@@ -2,7 +2,8 @@
 
 ## 特征
 
-* 分类
+* 二分类线性分类器
+* 可拓展为多分类
 
 ## 前置知识
 
@@ -17,7 +18,7 @@ $$
 
 ![image-20200731142710179](logistic_regression_and_maximum_entropy_model.assets/image-20200731142710179.png)
 
-
+可以看出 **decision boundary** 为 x = 0，故逻辑回归为线性分类器。
 
 ## 模型
 
