@@ -97,7 +97,7 @@ B[y]--*-->G
 D--exp-->E(exp\wx/)
 E--log-->F(log\1 + exp\wx//)
 D--*-->G(y\wx/)
-F--+-->H[ans]
+F-->|-|H[ans]
 G--+-->H
 ```
 
