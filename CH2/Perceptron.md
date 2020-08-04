@@ -7,9 +7,9 @@
 
 ## 前置知识
 
-符号函数 $sign(x):$
+符号函数 $\mathrm{sign}(x):$
 $$
-sign(x)=\begin{cases}
+\mathrm{sign}(x)=\begin{cases}
 +1, & x\geqslant 0\\
 -1, & x<0
 \end{cases}
@@ -25,7 +25,7 @@ $$
 
 输出：$y\in \cal{Y}$ 表示实例类别。
 
-决策函数：$y=f(x)=sign(w\cdot x+b)$
+决策函数：$y=f(x)=\mathrm{sign}(w\cdot x+b)$
 
 ## 策略
 
