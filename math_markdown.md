@@ -3,7 +3,7 @@
 
 ## 前言
 
-修改自 github 用户 smirkcao 的 math_markdown.md
+修改自 [smirkcao](https://github.com/SmirkCao/Lihang`) 的 math_markdown.md
 
 ## 数学符号
 
@@ -104,7 +104,8 @@
 | $\pm$      | \pm      | $\bot$           | \bot       | $\top$                     | \top                 |
 | $\lfloor$  | \lfloor  | $\rfloor$    | \rfloor    | $\circ$                    | \circ                    |
 | $\cdots$   | \cdots   | $\vdots$     | \vdots     | $\ddots$                   | \ddots                   |
-| $\ldots$   | \ldots=… |              |            |                            |                          |
+| $\ldots$   | \ldots=… | $\LaTeX$ | \LaTeX | $\|$ | \| |
+| $\langle$ | \langle | $\rangle$ | \rangle |  |  |
 
 注意\bot和\perp的区别，垂直是\perp
 
@@ -221,12 +222,19 @@ L(w)&=\sum\limits^{N}_{i=1}[y_i\log\pi(x_i)+(1-y_i)\log(1-\pi(x_i))]\\
 
 ### 表B:排版控制
 
-#### 括号大小
+#### 符号大小
 
 | 示例                                                         | 备注                                                         |
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | $\left \{ \frac{3}{5}  \left [ 3 + 2 * \left ( a + b +（-0.5）\right ) \right ] \right \}$ | \left \right 配对使用，自动控制不同层次括号的大小，大小依据具体公式变化。（可能大小不变） |
 | $\bigg \{ \frac{3}{5}  \Big [ 3 + 2 * \big ( a + b + （-0.5） \big ) \Big ] \bigg \}$ | \big，\Big，\bigg，\Bigg，按顺序控制的括号不断变大，且大小相对固定。（大小必变） |
+| $\big( \Big( \bigg( \Bigg($                                  | \big( \Big( \bigg( \Bigg(                                    |
+| $\big[ \Big[ \bigg[ \Bigg[$                                  | \big[ \Big[ \bigg[ \Bigg[                                    |
+| $\big\{ \Big\{ \bigg\{ \Bigg\{$                              | \big\{ \Big\{ \bigg\{ \Bigg\{                                |
+| $\big \langle \Big \langle \bigg \langle \Bigg \langle$      | \big \langle \Big \langle \bigg \langle \Bigg \langle        |
+| $\big| \Big| \bigg| \Bigg|$                                  | $\big\| \Big\| \bigg\| \Bigg\|$                              |
+| $\big \lceil \Big \lceil \bigg \lceil \Bigg \lceil$          | \big \lceil \Big \lceil \bigg \lceil \Bigg \lceil            |
+| $\big \rfloor \Big \rfloor \bigg \rfloor \Bigg \rfloor$      | \big \rfloor \Big \rfloor \bigg \rfloor \Bigg \rfloor        |
 
 #### 上下标位置
 
@@ -235,63 +243,24 @@ L(w)&=\sum\limits^{N}_{i=1}[y_i\log\pi(x_i)+(1-y_i)\log(1-\pi(x_i))]\\
 | $\min_{f \in {H}}$         | \min_{f \in {H}} 一般情况 inline math 会被压缩位置 |
 | $\min \limits_{f \in {H}}$ | \min \limits_{f \in {H}} 强制使下标在正下方        |
 
-
-
 ### 表C: 矩阵
 
 #### 普通矩阵
 
-$$
-\begin{aligned}
-M_1(x)=
-\begin{bmatrix}
-&a_{01}&a_{02}\\
-&0&0
-\end{bmatrix}
-&,M_2(x)=
-\begin{bmatrix}
-&b_{11}&b_{12}\\
-&b_{21}&b_{22}
-\end{bmatrix}
-\\
-M_3(x)=
-\begin{bmatrix}
-&c_{11}&c_{12}\\
-&c_{21}&c_{22}
-\end{bmatrix}
-&,M_4(x)=
-\begin{bmatrix}
-&1&0\\
-&1&0
-\end{bmatrix}
-\end{aligned}
-$$
+| Type                            | $\LaTeX$ markup                                              | Renders as                                         |
+| ------------------------------- | ------------------------------------------------------------ | -------------------------------------------------- |
+| Plain                           | \begin{matrix}<br/>1 & 2 & 3\\<br/>a & b & c<br/>\end{matrix} | $\begin{matrix}1 & 2 & 3\\a & b & c\end{matrix}$   |
+| Parentheses;<br/>round brackets | \begin{pmatrix}<br/>1 & 2 & 3\\<br/>a & b & c<br/>\end{pmatrix} | $\begin{pmatrix}1 & 2 & 3\\a & b & c\end{pmatrix}$ |
+| Brackets;<br/>square brackets   | \begin{bmatrix}<br/>1 & 2 & 3\\<br/>a & b & c<br/>\end{bmatrix} | $\begin{bmatrix}1 & 2 & 3\\a & b & c\end{bmatrix}$ |
+| Braces;<br/>curly brackets      | \begin{Bmatrix}<br/>1 & 2 & 3\\<br/>a & b & c<br/>\end{Bmatrix} | $\begin{Bmatrix}1 & 2 & 3\\a & b & c\end{Bmatrix}$ |
+| Pipes                           | \begin{vmatrix}<br/>1 & 2 & 3\\<br/>a & b & c<br/>\end{vmatrix} | $\begin{vmatrix}1 & 2 & 3\\a & b & c\end{vmatrix}$ |
+| Double pipes                    | \begin{Vmatrix}<br/>1 & 2 & 3\\<br/>a & b & c<br/>\end{Vmatrix} | $\begin{Vmatrix}1 & 2 & 3\\a & b & c\end{Vmatrix}$ |
 
-```latex
-\begin{aligned}
-M_1(x)=
-\begin{bmatrix}
-&a_{01}&a_{02}\\
-&0&0
-\end{bmatrix}
-&,M_2(x)=
-\begin{bmatrix}
-&b_{11}&b_{12}\\
-&b_{21}&b_{22}
-\end{bmatrix}
-\\
-M_3(x)=
-\begin{bmatrix}
-&c_{11}&c_{12}\\
-&c_{21}&c_{22}
-\end{bmatrix}
-&,M_4(x)=
-\begin{bmatrix}
-&1&0\\
-&1&0
-\end{bmatrix}
-\end{aligned}
-```
+If you need to create matrices with different [delimiters](https://www.overleaf.com/learn/Brackets_and_Parentheses), you can add them manually to a plain `matrix`. For example:
+
+| $\LaTeX$ makeup                                              | Renders as                                                   |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| \left\lceil<br/>\begin{matrix}<br/>1 & 2 & 3\\<br/>a & b & c<br/>\end{matrix}<br/>\right\rceil | $\left\lceil\begin{matrix}1 & 2 & 3\\a & b & c\end{matrix}\right\rceil$ |
 
 #### 带省略符号的Matrix
 
@@ -477,4 +446,5 @@ cond(no)->sub1(right)->op
 6. [List of Mathematical Symbols](https://en.wikipedia.org/wiki/List_of_mathematical_symbols)
 7. [数学公式](https://zh.wikipedia.org/wiki/Help:数学公式)
 8. [Matplotlib Math Text](https://matplotlib.org/tutorials/text/mathtext.html)
+9. [SmirkCao, Lihang, (2018), GitHub repository](https://github.com/SmirkCao/Lihang)
 
