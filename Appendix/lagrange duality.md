@@ -19,7 +19,7 @@ $$
 $$
 L(x,\alpha,\beta)=f(x)+\sum_{i=1}^k{\alpha_i c_i (x)}+\sum_{j=1}^l{\beta_i j_j (x)}
 $$
-其中，$x=(x^{(1)},x^{(2)},\cdots,x^{(n)})^T\in\R^n$，$\alpha_i,\ \beta_j$ 是拉格朗日乘子，$\alpha_i\geq0$。考虑 $x$ 的函数：
+其中，$x=(x^{(1)},x^{(2)},\cdots,x^{(n)})^T\in\R^n$，$\alpha_i,\ \beta_j$ 是拉格朗日乘子，$\alpha_i\geq0,\ \beta_i\geq0$。考虑 $x$ 的函数：
 $$
 \theta_P(x)=\max_{\alpha,\beta;\ \alpha_i\geq0}L(x,\alpha,\beta)
 $$

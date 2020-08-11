@@ -164,11 +164,10 @@ $$
        b^*=y_j-\sum_{i=1}^N a_i^*y_i(x_i\cdot x_j)
    $$
    
-4. 
 
 ### 算法
 
-输入：线性可分训练集 $T=\{(x_1,y_1),(x_2,y_2),\cdots,(x_N,y_N)\}$，其中 $x_i\in\mathcal{X}\sube \R^n$，$\ y_i\in\mathcal{Y}=\{-1,+1\}$，$\ i=1,2,\cdots,N$
+输入：线性可分训练集 $T=\{(x_1,y_1),(x_2,y_2),\cdots,(x_N,y_N)\}$，其中 $x_i\in\mathcal{X}\sube \R^n$，$\ y_i\in\mathcal{Y}=\{-1,+1\}$，$\ i=1,2,\cdots,N$；
 
 输出：分离超平面和分类决策函数。
 
@@ -226,10 +225,12 @@ $$
 &\xi_i\geq0,\quad i=1,2,\cdots,N
 \end{align}
 $$
+
 关于 $(w,b,\xi)$ 的解是存在的，可以证明 $w$ 的解释唯一的，但 $b$ 的解可能不唯一，而是存在一个区间。设解为 $(w^*,\ b^*)$，则分离超平面为：
 $$
 w^*\cdot x+b=0
 $$
+
 相应的分类决策函数为：
 $$
 f(x)=\mathrm{sign}(w^*\cdot x+b^*)
@@ -240,7 +241,7 @@ $$
 $$
 L(w,b,\xi,a,\mu)\equiv \frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i+\sum_{i=1}^Na_i[1-\xi_i-y_i(w\cdot x_i+b)]+\sum_{i=1}^N\mu_i(-\xi_i)
 $$
-其中 $a_i\geq0,\ \mu_i\geq0$ 为拉格朗日系数，式中恒等于表示与系数无关，只与训练样本有关。则原始最优化问题为：
+其中 $a_i\geq0,\ \mu_i\geq0$ 为拉格朗日系数，式中恒等于表示与参数无关，只与训练样本有关。则原始最优化问题为：
 $$
 \min_{w,b,\xi}\max_{a,\mu}L(w,b,\xi,a,\mu)
 $$
@@ -252,28 +253,28 @@ $$
 
 1. 先求 $\min_\limits{w,b,\xi}L(w,b,\xi,a,\mu)$，对 $w,b,\xi$ 求偏导并令其为 0 得：
 $$
-   \begin{align}
-   &\begin{cases}
-   \nabla_w L(w,b,\xi,a,\mu)=w-\sum_{i=1}^N a_i y_i x_i=0 \\
-   \nabla_b L(w,b,\xi,a,\mu)=-\sum_{i=1}^N a_i y_i=0 \\
-   \nabla_{\xi_i} L(w,b,\xi,a,\mu)=C-a_i-\mu_i=0 \\
-   \end{cases} \\
-   \Longleftrightarrow
-   &\begin{cases}
-   w=\sum_{i=1}^N a_i y_i x_i \\
-   \sum_{i=1}^N a_i y_i=0 \\
-   C=a_i+\mu_i \\
-   \end{cases}
-   \end{align}
+\begin{align}
+&\begin{cases}
+\nabla_w L(w,b,\xi,a,\mu)=w-\sum_{i=1}^N a_i y_i x_i=0 \\
+\nabla_b L(w,b,\xi,a,\mu)=-\sum_{i=1}^N a_i y_i=0 \\
+\nabla_{\xi_i} L(w,b,\xi,a,\mu)=C-a_i-\mu_i=0 \\
+\end{cases} \\
+\Longleftrightarrow
+&\begin{cases}
+w=\sum_{i=1}^N a_i y_i x_i \\
+\sum_{i=1}^N a_i y_i=0 \\
+C=a_i+\mu_i \\
+\end{cases}
+\end{align}
 $$
    代入 $L(w,b,\xi,a,\mu)$ 得：
 $$
-   \begin{align}
-   L(w,b,\xi,a,\mu)&=\frac{1}{2}||w||^2 + C\sum_{i=1}^N \xi_i + \sum_{i=1}^N a_i[1-\xi_i-y_i(w\cdot x_i+b)] + \sum_{i=1}^N \mu_i(-\xi_i)\\
-   &=\frac{1}{2}||w||^2 + C\sum_{i=1}^N \xi_i + \sum_{i=1}^N a_i - \sum_{i=1}^N a_i y_i (w\cdot x_i) - b\sum_{i=1}^N a_i y_i -\sum_{i=1}^N \xi_i(a_i+\mu_i)\\
-   &=(\frac{1}{2}-1)\sum_{i=1}^N \sum_{j=1}^N a_i a_j y_i y_j (x_i\cdot x_j) + \sum_{i=1}^Na_i \\
-   &=-\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N a_i a_j y_i y_j (x_i\cdot x_j)+\sum_{i=1}^N a_i \\
-   \end{align}
+\begin{align}
+L(w,b,\xi,a,\mu)&=\frac{1}{2}||w||^2 + C\sum_{i=1}^N \xi_i + \sum_{i=1}^N a_i[1-\xi_i-y_i(w\cdot x_i+b)] + \sum_{i=1}^N \mu_i(-\xi_i)\\
+&=\frac{1}{2}||w||^2 + C\sum_{i=1}^N \xi_i + \sum_{i=1}^N a_i - \sum_{i=1}^N a_i y_i (w\cdot x_i) - b\sum_{i=1}^N a_i y_i -\sum_{i=1}^N \xi_i(a_i+\mu_i)\\
+&=(\frac{1}{2}-1)\sum_{i=1}^N \sum_{j=1}^N a_i a_j y_i y_j (x_i\cdot x_j) + \sum_{i=1}^Na_i \\
+&=-\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N a_i a_j y_i y_j (x_i\cdot x_j)+\sum_{i=1}^N a_i \\
+\end{align}
 $$
    即：
 $$
@@ -315,40 +316,43 @@ $$
 算法：
 
 1. 选择惩罚参数 $C > 0$，构造并求解凸二次规划问题：
-$$
-   \begin{align}
-   \min_{a} \quad &\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N a_i a_j y_i y_j (x_i\cdot x_j) - \sum_{i=1}^N a_i \\
-   \mathrm{s.t.} \quad &\sum_{i=1}^N a_i y_i=0 \\
-   & 0\leq a_i \leq C, \quad i=1,2,\cdots,N \\
-   \end{align}
-$$
+    $$
+    \begin{align}
+    \min_{a} \quad &\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N a_i a_j y_i y_j (x_i\cdot x_j) - \sum_{i=1}^N a_i \\
+    \mathrm{s.t.} \quad &\sum_{i=1}^N a_i y_i=0 \\
+    & 0\leq a_i \leq C, \quad i=1,2,\cdots,N \\
+    \end{align}
+    $$
    求得最优解 $a^*=(a_1^*,a_2^*,\cdots,a_N^*)^T$；
 
 2. 选择 $a^*$ 的一个满足条件 $0 < a_j^* < C$ 的分量 $a_j^*$，计算：
-$$
-   w^*=\sum_{i=1}^N a_i^* y_i x_i\\
-   b^*=y_j-\sum_{i=1}^N a_i^*y_i(x_i\cdot x_j)
-$$
+    $$
+    w^*=\sum_{i=1}^N a_i^* y_i x_i\\
+       b^*=y_j-\sum_{i=1}^N a_i^*y_i(x_i\cdot x_j)
+    $$
+
 3. 得分离超平面：
-$$
-   w^* \cdot x + b^* = 0
-$$
-   分类决策函数：
-$$
-   f(x)=\mathrm{sign}(w^* \cdot x + b^*)
-$$
+    $$
+       w^* \cdot x + b^* = 0
+    $$
+    分类决策函数：
+    $$
+    f(x)=\mathrm{sign}(w^* \cdot x + b^*)
+    $$
 
 ### 支持向量
 
-![image-20200810164955157](svm.assets/image-20200810164955157.png)
+![image-20200811111159455](svm.assets/image-20200811111159455.png)
 
-$\xi_i$ 可以代表样本到正确的间隔边界的函数距离，则 $\xi_i>1$ 代表在分离超平面的另一边，即错误的一边。
+$\xi_i$ 可以代表对某一正（负）例样本，从 $H_1$（$H_2$）间隔边界，沿着垂直于分离超平面的方向，以面对分离超平面为正方向，到达样本点的函数间隔；则 $\xi_i>1$ 代表在分离超平面的另一边，即错误的一边； $\xi_i=0$ 代表在间隔边界上，或者非支持向量； $0<\xi_i<1$ 代表正确分类，并且在间隔内。
+
+$a_i=0$ 代表非支持向量；$0< a_i \leq C$ 代表支持向量；$a_i=C$ 有 $\mu_i=0$，即 $\xi_i=0$？这部分还存疑，待解决。
 
 ### 合页损失函数
 
-合页损失函数（hinge loss function）：
+首先定义符号 $[z]_+$：
 $$
-f(z)=[z]_{+}=
+[z]_{+}=
 \begin{cases}
 z,\quad z>0 \\
 0,\quad z\leq 0
@@ -362,8 +366,21 @@ $$
 &\xi_i\geq0,\quad i=1,2,\cdots,N
 \end{align}
 $$
-若令 $[1-y_i(w\cdot x_i+b)]_+=\xi_i$，则满足 $\xi_i \geq 0$。
+若令 $[1-y_i(w\cdot x_i+b)]_+=\xi_i$，则满足 $\xi_i \geq 0$，即上式第二项约束；代入第一项约束，易知满足该约束。故原目标函数可等价于：
+$$
+\begin{align}
+&\min_{w,b,\ \xi}\frac{1}{2}||w||^2+C\sum_{i=1}^N\xi_i \\
+\Longleftrightarrow &\min_{w,b,\ \xi} C\left(\frac{1}{2C}||w||^2+\sum_{i=1}^N\xi_i \right), \quad C>0 \\
+\Longleftrightarrow &\min_{w,b,\ \xi} \lambda||w||^2+\sum_{i=1}^N\xi_i , \quad \lambda=\frac{1}{2C}>0 \\
+\Longleftrightarrow &\min_{w,b}\sum_{i=1}^N[1-y_i(w\cdot x_i+b_i)]_+ + \lambda||w||^2 \\
+\end{align}
+$$
 
+其中第一部分，即 $[1-y(w\cdot x+b)]_+$ 为经验风险，称为合页损失函数（hinge loss function）。合页损失函数 $[z+]$（粗实线）、 0-1 损失函数（细实线）、感知机损失函数（虚线）的图像如下所示：
+
+![image-20200811111701278](svm.assets/image-20200811111701278.png)
+
+第二部分，即 $\lambda||w||^2$，是系数为 $\lambda$ 的 $w$ 的 $L_2$ 范数，为正则项。
 
 
 
