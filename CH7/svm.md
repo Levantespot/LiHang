@@ -8,6 +8,8 @@
 
 ## 线性可分支持向量机
 
+### 前置知识
+
 **函数间隔**（functional margin）
 
 由点到平面的公式 $D=\frac{|w\cdot x +b|}{||w||}$ 可知，在超平面 $w\cdot x+b$ 确定的情况下，$|w\cdot x+b|$ 可以**相对**表示点 $x$ 距离超平面的远近。而 $y_i\in\{-1,+1\}$，故可以根据 $y_i(w\cdot x_i + b)$ 的符号判断分类结果的正确性和确信度 。
@@ -387,6 +389,8 @@ $$
 
 当数据集线性不可分时可以使用非线性支持向量机。
 
+### 前置知识
+
 **非线性问题**
 
 若对于给定的训练数据集 $T={(x_1,y_1),(x_2,y_2),\cdots,(x_N,y_N)}$，其中 $x_i \in \mathcal{X} \subseteq \R^n,\ y_i \in \mathcal{Y}={-1,+1},\ i=1,2,\cdots,N$。若能用 $\R^n$ 中的一个超曲面将正立负例正确分开，则称这个问题为非线性可分问题。
@@ -420,14 +424,25 @@ $$
 * 对于给定的 $\mathcal{X}$ 和 $K(x,z)$，特征空间 $\mathcal{H}$ 和 映射函数 $\phi$ 的取法不唯一；
 
 **在支持向量机中的应用**
-$$
-W
-$$
 
+通过将两向量内积定义为核函数，再找到合适的映射函数，即可将在非线性可分的原输入空间上的点等价转换到线性可分的空间上，如把低维向量映射为高维向量，最后达到从新的特征空间学习的效果。
 
+原目标函数与决策函数：
+$$
+\min_{a} \quad \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N a_i a_j y_i y_j (x_i\cdot x_j) - \sum_{i=1}^N a_i \\
+\begin{align}
+f(x)&=\mathrm{sign}(w^* \cdot x + b^*) \\
+&=\mathrm{sign}(\sum_{i=1}^N a_i^* y_i x_i \cdot x + b^*)
+\end{align}
+$$
+定义 $x_i \cdot x_j$ 为核函数 $K(x_i,x_j)$：
+$$
+\min_{a} \quad \frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N a_i a_j y_i y_j K(x_i,x_j) - \sum_{i=1}^N a_i \\
+f(x)=\mathrm{sign}(\sum_{i=1}^N a_i^* y_i K(x_i,x) + b^*)
+$$
 **正定核**
 
-等学习泛函再看
+等学习实变泛函再看
 
 **常用核函数**
 
@@ -435,19 +450,83 @@ $$
    $$
    K(x,z)=(x \cdot z + 1)^P
    $$
-   
+   对应的支持向量机是一个 $p$ 次多项式分类器。
 
+2. 高斯核函数（Gaussian kernel function）
+   $$
+   K(x,z)=\exp(-\frac{||x-z||^2}{2\sigma^2})
+   $$
+   对应的支持向量机是高斯径向基函数（radial basis function）分类器。
 
+3. 字符串核函数（string kernel function）
+
+   pass
 
 ### 模型
 
-
+从非线性分类训练集，通过核函数与软间隔最大化，或凸二次规划，学习得到的分类决策函数：
+$$
+f(x)=\mathrm{sign} \left(\sum_{i=1}^N a_i^* y_i K(x_i,x) + b^* \right)
+$$
+$K(x,z)$ 是非正定核函数。
 
 ### 策略
 
 
 
 ### 算法
+
+输入：线性可分训练集 $T=\{(x_1,y_1),(x_2,y_2),\cdots,(x_N,y_N)\}$，其中 $x_i\in\mathcal{X}\sube \R^n$，$\ y_i\in\mathcal{Y}=\{-1,+1\}$，$\ i=1,2,\cdots,N$
+
+输出：分离超平面和分类决策函数。
+
+算法：
+
+1. 选择惩罚参数 $C > 0$，构造并求解凸二次规划问题：
+   $$
+   \begin{align}
+   \min_{a} \quad &\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N a_i a_j y_i y_j K(x_i,x_j) - \sum_{i=1}^N a_i \\
+   \mathrm{s.t.} \quad &\sum_{i=1}^N a_i y_i=0 \\
+   & 0\leq a_i \leq C, \quad i=1,2,\cdots,N \\
+   \end{align}
+   $$
+   求得最优解 $a^*=(a_1^*,a_2^*,\cdots,a_N^*)^T$；
+
+2. 选择 $a^*$ 的一个满足条件 $0 < a_j^* < C$ 的分量 $a_j^*$，计算：
+   $$
+   b^*=y_j-\sum_{i=1}^N a_i^*y_iK(x_i,x_j)
+   $$
+
+3. 得分类决策函数：
+   $$
+   f(x)=\mathrm{sign} \left(\sum_{i=1}^N a_i^* y_i K(x_i,x) + b^* \right)
+   $$
+
+当 $K(x,z)$ 为正定核函数时，为凸二次规划为题，解存在。
+
+## 实现算法-序列最小最优化算法
+
+序列最小最优化（sequential minimal optimization, SMO）算法基本思路：如果所有变量的解都满足此优化问题的 KKT 条件，那么既可以得到该最优化问题的解；否则，选择两个变量，固定其他变量，针对这两个变量构建一个二次规划问题。
+
+原问题：
+$$
+\begin{align}
+\min_{a} \quad &\frac{1}{2}\sum_{i=1}^N\sum_{j=1}^N a_i a_j y_i y_j K(x_i,x_j) - \sum_{i=1}^N a_i \\
+\mathrm{s.t.} \quad &\sum_{i=1}^N a_i y_i=0 \\
+& 0\leq a_i \leq C, \quad i=1,2,\cdots,N \\
+\end{align}
+$$
+二次规划问题（子问题）：
+$$
+\min_{\alpha_1,\alpha_2} \quad W(\alpha_1,\alpha_2)=\frac{1}{2}K_{11}\alpha_1^2 + \frac{1}{2}K_{22}\alpha_2^2 - (\alpha_1+\alpha_2) + y_1\alpha_1\sum_{i=3}^N y_i a_i K_{i1} + y_2\alpha_2\sum_{i=3}^N y_i a_i K_{i2} \\
+\begin{align}
+\mathrm{s.t.}\quad &\alpha_1 y_1 + \alpha_2 y_2 = -\sum_{i=3}^N y_1 \alpha_i = \varsigma \\
+& 0 \leq \alpha_i \leq C,\quad i=1,2
+\end{align}
+$$
+其中，$K_{ij}=K(x_i,x_j),\ i,j=1,2,\cdots,N$，$\varsigma$ 是常数，子问题的目标函数中省略了不含 $\alpha_1,\alpha_2$ 的常数项，$y_1,y_2\in\{-1,+1\}$。
+
+![image-20200820113501256](svm.assets/image-20200820113501256.png)
 
 
 
@@ -456,4 +535,5 @@ $$
 **思路**
 
 * 线性可分支持向量机：最大化正负例的支持向量的间距。通过令训练集中的支持向量间到分离超平面的函数间隔为一个单位长度（即支持向量距离分离超平面的几何间距值为 1），将原问题转化为最优化问题——最小化 $\frac{1}{2}||w||^2$；求解方法采用拉格朗日法。故只使用部分训练样本，这些训练样本称为支持向量。该模型学习过程无超参数。
-* 线性支持向量机：原线性可分支持向量机中所有的训练集样本点距离分离超平面的最小几何间距为 1，现在允许几何间距为 $1-\xi_i$ （$0<1-\xi_i<1$ 表示正确分类但是距离分离超平面几何间距小于 1，$1-\xi_i=0$ 表示在分离超平面上，$1-\xi_i<0$ 表示错误分类）的点存在，并且这些点都作为支持向量用于模型建立。学习过程有超参数：惩罚系数 $C$、
+* 线性支持向量机：原线性可分支持向量机中所有的训练集样本点距离分离超平面的最小几何间距为 1，现在允许几何间距为 $1-\xi_i$ （$0<1-\xi_i<1$ 表示正确分类但是距离分离超平面几何间距小于 1，$1-\xi_i=0$ 表示在分离超平面上，$1-\xi_i<0$ 表示错误分类）的点存在，并且这些点都作为支持向量用于模型建立。学习过程有超参数：惩罚系数 $C$。
+* 非线性支持向量机：通过定义核函数，将原特征空间中线性不可分的点映射到线性可分的新空间，从新特征空间中学习。
